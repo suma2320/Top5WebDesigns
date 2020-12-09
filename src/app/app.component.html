@@ -1,0 +1,47 @@
+<div style="height: 100vh;">
+  <nav class="navbar navbar-light bg-white" style="width: 100%;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+  <nav class="navbar navbar-dark ">
+    <h2 style="text-align: center/left/right">Top 5 <strong>Web Design</strong>  Podcasts</h2>
+  </nav>
+  <ng-container *ngIf="results">
+    <div class="tile" *ngFor="let result of results;let i = index">
+      
+      <div class="circle" [innerHTML]="i+1"></div>
+
+      <div class="blog-post">
+        <div class="blog-post_img">
+          <img src="{{result.thumbnail}}">
+          <div class="bottom-left"></div>
+        </div>
+        <div class="blog-post_info">
+          
+          <div class="flex">
+          <div class="blog-post-left">
+            <h1 class="blog-post_">{{result.title_original}}</h1>
+            <h6 class="blog-post_text">by {{result.publisher_original}}<br /> {{result.genre_ids.length}} Geners</h6>
+            <hr>
+            <ul id="icons">
+              <li id="apple"><a href="{{result.audio}}" target="_blank"><img src="assets\svg\apple.svg" class="icon"
+                    alt="apple icon" />Itunes</a></li>
+              <li id="web"><a href="{{result.audio}}" target="_blank"><img src="assets\svg\link.svg" class="icon"
+                    alt="link icon" />web</a></li>
+              <li id="rss"><a href="{{result.audio}}" target="_blank"><img src="assets\svg\rss.svg" class="icon"
+                    alt="rss icon" />rss</a></li>
+            </ul>
+          </div>
+          <div class="blog-post-right">
+            <div class="blog-post_text" [innerHTML]="result.description_highlighted">
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </ng-container>
+
+  <router-outlet></router-outlet>
